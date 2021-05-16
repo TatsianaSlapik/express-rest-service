@@ -1,19 +1,36 @@
-const User=require('../resources/users/user.model');
+/* const User=require('../resources/users/user.model');
+const Board=require('../resources/boards/board.model');
+const Task=require('../resources/tasks/task.model'); */
 
 const myDb={
     Users:[],
     Boards:[],
     Tasks:[],
-    tableUsersStructure: ()=>{
-        
+    tableUsersStructure: user=>{
+        if(user){
+            myDb.Tasks.filter(task=>task).forEach(task=>{
+               // eslint-disable-next-line no-param-reassign
+               task.userId = task.userId===user.id?null:task.userId;
+            })
+        }
     },
-  
-}
-(()=>{for(let i=0;i<3; i+1){
+    tableBoardsStructure: board=>{
+        if(board){
+            myDb.Tasks.filter(task=> task&& task.boardId===board.id).forEach(task=>{
+                (myDb.Tasks[myDb.Tasks.indexOf(task)]=undefined)}
+            );
+        }
+    },
+    tableTasksStructure:()=>{}
+};
+/* (()=>{for(let i=0;i<3; i+1){
     myDb.Users.push(new User());
 }
+ const board=new Board();
+myDb.Boards.push(board);
+ myDb.Tasks.push(new Task({boardId: board.id})); 
 
-})();
+})(); */
 
 const getAllEntities= tableName=>myDb[tableName].filter(ent=>ent);
 
