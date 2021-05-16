@@ -9,6 +9,6 @@ const remove = boardId=>boardsRepo.remove(boardId);
 
 const save = board=>boardsRepo.save(new Board(board))
 
-const update=(boardId, board)=>boardsRepo.remove(boardId,board);
+const update=(boardId, board)=>boardsRepo.update(boardId,board);
 
 module.exports = { getAll,get,remove,save,update};

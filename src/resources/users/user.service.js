@@ -9,6 +9,6 @@ const remove = userId=>usersRepo.remove(userId);
 
 const save = user=>usersRepo.save(new User(user))
 
-const update=(userId, user)=>usersRepo.remove(userId,user);
+const update=(userId, user)=>usersRepo.update(userId,user);
 
 module.exports = { getAll,get,remove,save,update};
