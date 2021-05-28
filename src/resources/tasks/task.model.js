@@ -17,9 +17,9 @@ class Task {
    * @property {string} title - Name of board
    * @property {number} task.order - Order of task in column
    * @property {string} task.description - Task description
-   * @property {string } task.userId - Id of assigned user
-   * @property {string } task.boardId - Id of board
-   * @property {string } task.columnId - Id of column
+   * @property {string} task.userId - Id of assigned user
+   * @property {string} task.boardId - Id of board
+   * @property {string} task.columnId - Id of column
    */
   constructor({
     id = uuid(),

@@ -1,14 +1,39 @@
 const User = require('./user.model');
 const usersRepo = require('./user.memory.repository');
 
+/**
+ * Get lists of all users
+ * @returns {Promise} List of all users
+ */
 const getAll = () => usersRepo.getAll();
 
-const get = userId=> usersRepo.get(userId);
+/**
+ * Get user by its id
+ * @param {string} userId Id of requested user
+ * @returns {Promise} Requested user instance
+ */
+const get = (userId) => usersRepo.get(userId);
 
-const remove = userId=>usersRepo.remove(userId);
+/**
+ * Removed user by its id
+ * @param {string} userId Id of requested user
+ * @returns {Promise} Removed user by its id
+ */
+const remove = (userId) => usersRepo.remove(userId);
 
-const save = user=>usersRepo.save(new User(user))
+/**
+ * Create a new User in database
+ * @param {Object.<User>} user Object with user fields
+ * @returns {Promise}  New instance of Users
+ */
+const save = (user) => usersRepo.save(new User(user));
 
-const update=(userId, user)=>usersRepo.update(userId,user);
+/**
+ * Updates user by its id
+ * @param {string} userId Id of requested user
+ * @param {Object.<User>} user Object with user fields
+ * @returns {Promise} Updated user instance
+ */
+const update = (userId, user) => usersRepo.update(userId, user);
 
-module.exports = { getAll,get,remove,save,update};
+module.exports = { getAll, get, remove, save, update };
