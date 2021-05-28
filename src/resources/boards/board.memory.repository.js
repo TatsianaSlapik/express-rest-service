@@ -11,7 +11,7 @@ const getAll = async () => myDB.getAllEntities(TABLE_NAME);
 /**
  * Get board by its id
  *@async
- *@param {String} boardId Id of requested board
+ *@param {string} boardId Id of requested board
  *@returns {Promise<Boards>} Requested board instance
  */
 const get = async (boardId) => {
@@ -29,15 +29,15 @@ const save = async (board) => myDB.saveEntity(TABLE_NAME, board);
 /**
  * Removed board by its id
  * @async
- * @param {String} boardId Id of requested board
+ * @param {string} boardId Id of requested board
  * @returns {Promise<Boards>} Removed board by its id
  */
 const remove = async (boardId) => myDB.removeEntity(TABLE_NAME, boardId);
 
 /**
  * Updates board by its id
- *
- * @param {String} boardId  Id of requested board
+ * @async
+ * @param {string} boardId  Id of requested board
  * @param {Object.<Boards>} board Object with board fields
  * @returns {Promise<Boards>} Updated board instance
  */
