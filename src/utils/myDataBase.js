@@ -42,8 +42,8 @@ const myDb = {
     "name": string,
     "login": string
   }
- * @param {Array} tableName
- * @returns {Array}
+ * @param {String} tableName name entity
+ * @returns {Array} array of all entity
  */
 const getAllEntities = (tableName) => myDb[tableName].filter((ent) => ent);
 
@@ -55,9 +55,9 @@ const getAllEntities = (tableName) => myDb[tableName].filter((ent) => ent);
     "name": string,
     "login": string
   }
- * @param {Array} tableName
- * @param {String} id
- * @returns {Object}
+ * @param {String} tableName Name entity
+ * @param {String} id Id of requested entity
+ * @returns {Object} Requested instance
  */
 const getEntity = (tableName, id) => {
   const entities = myDb[tableName]
@@ -74,9 +74,9 @@ const getEntity = (tableName, id) => {
     "name": string,
     "login": string
   }
- * @param {Array} tableName
- * @param {String} id
- * @returns {Object}
+ * @param {String} tableName Name entity
+ * @param {String} id Id of requested entity
+ * @returns {Object} Remote instance
  */
 const removeEntity = (tableName, id) => {
   const entity = getEntity(tableName, id);
@@ -106,9 +106,9 @@ const removeEntity = (tableName, id) => {
     "name": "user1",
     "login": "login1"
   }
- * @param {Array} tableName
- * @param {Object} entity
- * @returns {Object}
+ * @param {String} tableName Name entity
+ * @param {Object} entity Object with entity fields
+ * @returns {Object} New instance of entity
  */
 const saveEntity = (tableName, entity) => {
   myDb[tableName].push(entity);
@@ -128,10 +128,10 @@ const saveEntity = (tableName, entity) => {
     "name": string1,
     "login": string1
   }
- * @param {Array} tableName
- * @param {String} id
- * @param {Object} entity
- * @returns {Object}
+ * @param {String} tableName Name entity
+ * @param {String} id Id of requested entity
+ * @param {Object} entity  Object with entity fields
+ * @returns {Object} Updated entity instance
  */
 const updateEntity = (tableName, id, entity) => {
   const oldEnt = getEntity(tableName, id);
