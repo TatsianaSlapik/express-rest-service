@@ -24,6 +24,7 @@ const myDb = {
       );
     }
   },
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   tableTasksStructure: () => {},
 };
 (() => {
