@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 
 app.use((err, _req, res, _next) => {
   process.stdout.write(err.stack);
-  res.status(500).send('Something broke!');
+  res.status(500).send('Something has been broken!');
 });
 
 process.on('uncaughtException', (err) => {
