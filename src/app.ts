@@ -19,6 +19,24 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((err, _req, res, _next) => {
+  process.stdout.write(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+process.on('uncaughtException', (err) => {
+  process.stdout.write(
+    `An error occurred while application execution: ${err.message}\n`
+  );
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, p) => {
+  process.stdout.write(
+    `Possibly Unhandled Rejection at: Promise ${p} reason: ${reason}\n`
+  );
+});
+
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.use('/', (req, res, next) => {
