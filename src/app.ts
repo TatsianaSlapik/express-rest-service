@@ -11,6 +11,14 @@ const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  process.stdout.write(`Request url: ${req.originalUrl}\n`);
+  process.stdout.write(`Request query: ${JSON.stringify(req.query)}\n`);
+  process.stdout.write(`Request method: ${req.method}\n`);
+  process.stdout.write(`Response status code: ${res.statusCode}\n`);
+  next();
+});
+
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.use('/', (req, res, next) => {
