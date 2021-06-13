@@ -11,6 +11,32 @@ const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+  process.stdout.write(`Request url: ${req.originalUrl}\n`);
+  process.stdout.write(`Request query: ${JSON.stringify(req.query)}\n`);
+  process.stdout.write(`Request method: ${req.method}\n`);
+  process.stdout.write(`Response status code: ${res.statusCode}\n`);
+  next();
+});
+
+app.use((err, _req, res, _next) => {
+  process.stdout.write(err.stack);
+  res.status(500).send('Something has been broken!');
+});
+
+process.on('uncaughtException', (err) => {
+  process.stdout.write(
+    `An error occurred while application execution: ${err.message}\n`
+  );
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, p) => {
+  process.stdout.write(
+    `Possibly Unhandled Rejection at: Promise ${p} reason: ${reason}\n`
+  );
+});
+
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.use('/', (req, res, next) => {
