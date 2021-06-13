@@ -1,5 +1,11 @@
 # RS School REST service
 
+# Task 6 Docker basics
+
+1. install docker desktop
+2. run docker-compose up
+3. check out http://localhost:4000
+
 ## Prerequisites
 
 - Git - [Download & Install Git](https://git-scm.com/downloads).

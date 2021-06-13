@@ -10,6 +10,8 @@ services:
       - PORT=4000
     networks:
       - user-defined
+    volumes:
+      - .:/usr/src/app
   postgres:
     build: ./database
     ports:
@@ -24,4 +26,3 @@ services:
       - user-defined
 networks:
   user-defined:
-    driver: bridge
