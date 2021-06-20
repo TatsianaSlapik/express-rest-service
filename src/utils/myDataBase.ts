@@ -82,3 +82,4 @@ export default class MyDataBase {
     return this.getEntity(tableName, id);
   };
 }
+// added database
